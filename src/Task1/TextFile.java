@@ -21,9 +21,7 @@ public class TextFile {
         this.text = text;
     }
 
-    public String getText() {
-        return text;
-    }
+
 
     public String addText(String sss) {
         String str = this.text + sss;
@@ -38,5 +36,8 @@ public class TextFile {
     public File renameFile(String str) {
         this.file.setFileName(str);
         return this.file;
+    }
+    public String getText() {
+        return text;
     }
 }
