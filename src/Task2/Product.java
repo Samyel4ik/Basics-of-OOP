@@ -5,6 +5,17 @@ public class Product {
     int theCost;
     int theWeight;
 
+
+    public Product(String name, int theCost, int theWeight) {
+        this.name = name;
+        this.theCost = theCost;
+        this.theWeight = theWeight;
+    }
+
+    public int getTheCost() {
+        return theCost;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -12,16 +23,6 @@ public class Product {
                 ", theCost=" + theCost +
                 ", theWeight=" + theWeight +
                 '}';
-    }
-
-    public Product(String name, int theCost, int theWeight) {
-        this.name =name;
-        this.theCost =theCost;
-        this.theWeight =theWeight;
-    }
-
-    public int getTheCost() {
-        return theCost;
     }
 }
 
