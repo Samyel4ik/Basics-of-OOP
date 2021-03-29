@@ -9,19 +9,6 @@ public class TextFile {
         this.text = text;
     }
 
-    @Override
-    public String toString() {
-        return "TextFile{" +
-                "file=" + file +
-                ", text='" + text + '\'' +
-                '}';
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-
 
     public String addText(String sss) {
         String str = this.text + sss;
@@ -37,7 +24,16 @@ public class TextFile {
         this.file.setFileName(str);
         return this.file;
     }
+
     public String getText() {
         return text;
+    }
+
+    @Override
+    public String toString() {
+        return "TextFile{" +
+                "file=" + file +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

@@ -13,6 +13,10 @@ public class File {
         this.fileName = fileName;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
     @Override
     public String toString() {
         return "File{" +
@@ -21,8 +25,5 @@ public class File {
                 '}';
     }
 
-    public String getFileName() {
-        return fileName;
-    }
 
 }
