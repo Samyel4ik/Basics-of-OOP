@@ -13,7 +13,7 @@ public class Class {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         Color[] colors = arrayColors(random);
-        Prise[] prises = arrayPrice(random);
+        Prise[] prises = arrayPrice();
 
         Treasures treasures = new Treasures();
         treasures.setTreasures(arrayTreasures(colors, prises));
@@ -68,14 +68,14 @@ public class Class {
     }
 
 
-    public static int num(Random random) {
+    public static int num() {
         return new Random().nextInt(300);
     }
 
-    public static Prise[] arrayPrice(Random random) {
+    public static Prise[] arrayPrice() {
         Prise[] array = new Prise[100];
         for (int i = 0; i < array.length; i++) {
-            array[i] = new Prise(num(random));
+            array[i] = new Prise(num());
         }
         return array;
     }

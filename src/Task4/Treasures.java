@@ -12,7 +12,7 @@ public class Treasures {
 
     public Treasure maxTreasure() {
         int max = this.treasure[0].getPrise().getPriseTreasure();
-        Treasure treasure = null;
+        Treasure treasure = this.treasure[0];
         for (int i = 0; i < this.treasure.length; i++) {
             if (max < this.treasure[i].getPrise().priseTreasure) {
                 max = this.treasure[i].getPrise().priseTreasure;
