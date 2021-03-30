@@ -1,30 +1,23 @@
 package Task4;
 
 public class Treasure {
-    String name;
-    String color;
-    int weight;
-    int price;
+    Color color;
+    Prise prise;
 
-    public Treasure (String name,String color, int weight,int price){
-        this.name = name;
+    public Treasure(Color color, Prise prise) {
         this.color = color;
-        this.weight = weight;
-        this.price = price;
-
+        this.prise = prise;
     }
 
-    public int getPrice() {
-        return price;
+    public Prise getPrise() {
+        return prise;
     }
 
     @Override
     public String toString() {
         return "Treasure{" +
-                "name='" + name + '\'' +
-                ", color='" + color + '\'' +
-                ", weight=" + weight +
-                ", price=" + price +
+                "color=" + color +
+                ", prise=" + prise +
                 '}';
     }
 }

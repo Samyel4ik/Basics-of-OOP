@@ -20,7 +20,6 @@ public class Class {
         while (xxx != 4) {
             menu();
             xxx = input(scanner, packages, flowers);
-
         }
     }
 
