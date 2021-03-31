@@ -5,7 +5,7 @@ public class Packaging {
     String name;
     int pricePackaging;
 
-    public Packaging(int number, String name,  int pricePackaging) {
+    public Packaging(int number, String name, int pricePackaging) {
         this.number = number;
         this.name = name;
 

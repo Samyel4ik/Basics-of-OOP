@@ -13,7 +13,6 @@ public class FlowerComposition {
 
     }
 
-
     @Override
     public String toString() {
         return "FlowerComposition{" +
