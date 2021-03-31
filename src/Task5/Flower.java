@@ -3,13 +3,11 @@ package Task5;
 public class Flower {
     int number;
     String name;
-    int quantity;
     int prise;
 
-    public Flower(int number, String name, int quantity, int prise) {
+    public Flower(int number, String name,  int prise) {
         this.number = number;
         this.name = name;
-        this.quantity = quantity;
         this.prise = prise;
     }
 
@@ -22,7 +20,6 @@ public class Flower {
         return "Flower{" +
                 "number=" + number +
                 ", name='" + name + '\'' +
-                ", quantity=" + quantity +
                 ", prise=" + prise +
                 '}';
     }

@@ -78,26 +78,25 @@ public class Class {
         Flower flower = flowers.choiceOfFlower(x);
         Packaging packaging = packages.choiceOfPackaging(z);
 
-        flowerComposition.setFlowerComposition(flower, packaging);
 
         return flowerComposition;
     }
 
     public static Packaging[] arrayPackagings() {
         return new Packaging[]{
-                new Packaging(1, "бумага", "желтый", 10),
-                new Packaging(2, "фольга", "серебристая", 15),
-                new Packaging(3, "целофан", "прозрачный", 5),
-                new Packaging(4, "ткань", "бордовая", 25),
-                new Packaging(5, "бумага", "голубая", 10)};
+                new Packaging(1, "бумага",  10),
+                new Packaging(2, "фольга",  15),
+                new Packaging(3, "целофан",  5),
+                new Packaging(4, "ткань", 25),
+                new Packaging(5, "бумага", 10)};
     }
 
     public static Flower[] arrayFlowers() {
         return new Flower[]{
-                new Flower(1, "ромашки", 21, 25),
-                new Flower(2, "розы", 15, 30),
-                new Flower(3, "ирисы", 19, 17),
-                new Flower(4, "ландыши", 9, 12),
-                new Flower(5, "фиалки", 7, 11)};
+                new Flower(1, "ромашка",  20),
+                new Flower(2, "роза",  30),
+                new Flower(3, "ирис",  20),
+                new Flower(4, "ландышь",  15),
+                new Flower(5, "фиалка",  10)};
     }
 }

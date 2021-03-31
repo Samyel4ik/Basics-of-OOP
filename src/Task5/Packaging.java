@@ -2,14 +2,13 @@ package Task5;
 
 public class Packaging {
     int number;
-    String color;
-    String material;
+    String name;
     int pricePackaging;
 
-    public Packaging(int number, String material, String color, int pricePackaging) {
+    public Packaging(int number, String name,  int pricePackaging) {
         this.number = number;
-        this.material = material;
-        this.color = color;
+        this.name = name;
+
         this.pricePackaging = pricePackaging;
     }
 
@@ -22,8 +21,8 @@ public class Packaging {
     public String toString() {
         return "Packaging{" +
                 "number=" + number +
-                ", color='" + color + '\'' +
-                ", material='" + material + '\'' +
+
+                ", material='" + name + '\'' +
                 ", pricePackaging=" + pricePackaging +
                 '}';
     }

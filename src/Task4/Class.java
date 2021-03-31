@@ -1,6 +1,7 @@
 package Task4;
 
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -52,8 +53,8 @@ public class Class {
                 System.out.println(treasures);
                 System.out.print("На какую сумму вы расчитываете произвести выбор сокровища - ");
                 int x = scanner.nextInt();
-                Treasure treasure = treasures.treasurePrice(x);
-                System.out.println(treasure);
+                Treasure[] treasure = treasures.treasurePrice(x);
+                System.out.println(Arrays.toString(treasure));
         }
         return input;
     }
