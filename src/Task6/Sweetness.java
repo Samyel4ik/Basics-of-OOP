@@ -2,26 +2,28 @@ package Task6;
 
 public class Sweetness {
     String name;
-    int sweetPrice;
+    int calories;
 
-    public Sweetness(String name, int sweetPrice) {
+
+    public Sweetness(String name,  int calories) {
         this.name = name;
-        this.sweetPrice = sweetPrice;
+
+        this.calories = calories;
+    }
+
+    public int getCalories() {
+        return calories;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getSweetPrice() {
-        return sweetPrice;
-    }
-
     @Override
     public String toString() {
         return "Sweetness{" +
                 "name='" + name + '\'' +
-                ", sweetPrice=" + sweetPrice +
+
                 '}';
     }
 }
