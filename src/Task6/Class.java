@@ -2,137 +2,154 @@ package Task6;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Class {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        SeveralPackages severalPackages = new SeveralPackages();
-        severalPackages.setSeveralPackages(arrayPackaging());
+        ArrayList<Sweetness> arrayListSweetness = arrayListSweetness();
+        ArrayList<Packaging> arrayListPackaging = arrayListPackaging();
 
-        List<Sweetness> List = arraySweetness();
+        Supermarket supermarket = new Supermarket();
+        supermarket.setSupermarket(arrayListSweetness, arrayListPackaging);
+
 
         int exit = 0;
-        while (exit != 5) {
+        while (exit != 3) {
+
             menu();
-            exit = processUserInput(scanner, severalPackages, List);
+            exit = processUserInput(scanner, supermarket, arrayListSweetness, arrayListPackaging);
         }
     }
 
     public static void menu() {
         System.out.println("\"Выберете пункт меню:"
                 + "\n" +
-                "1. Покаать предложение."
+                "1. Покаать предложение по Конфетам и Упаковкам."
                 + "\n" +
                 "2. Выбрать подарок."
                 + "\n" +
-                "3. Добавить сладость."
-                + "\n" +
-                "4. Общая калорийность подарка."
-                + "\n" +
-                "5. Выход.");
+                "3. Выход.");
         System.out.print("Ваш выбор - ");
     }
 
-    public static int processUserInput(Scanner scanner, SeveralPackages severalPackages, List<Sweetness> list) {
+    public static int processUserInput(Scanner scanner, Supermarket supermarket, ArrayList<Sweetness> arrayListSweetness, ArrayList<Packaging> arrayListPackaging) {
 
         int selectedOption = Integer.parseInt(scanner.nextLine());
 
         switch (selectedOption) {
 
             case 1:
-                System.out.println("Упаковка: ");
-                System.out.println(severalPackages);
-                System.out.println("Сладости: ");
-                System.out.println(list);
+
+                System.out.println(supermarket);
                 break;
             case 2:
-                System.out.println("Сделайте выбор упаковки из данных: " + Arrays.toString(severalPackages.arrayOfPackages()));
+                System.out.println("Сделайте выбор упаковки из данных: " + Arrays.toString(supermarket.getPackagingList()));
                 String str = scanner.nextLine();
-                System.out.println("Сделайте выбор сладости из данных: " + Arrays.toString(arrayOfSweets(list)));
+                System.out.println("Сделайте выбор сладости из данных: " + Arrays.toString(supermarket.getSweetnessList()));
                 String str1 = scanner.nextLine();
 
-                Packaging packaging = packagingSelection(severalPackages, str);
-                List<Sweetness> list1 = sweetsList(list, str1);
-                Gift gift = new Gift();
-                gift.setGift(list1, packaging);
-                System.out.println(gift);
-                break;
-            case 3:
-                System.out.println("Сделайте выбор сладости из данных: " + Arrays.toString(arrayOfSweets(list)));
-                String addSweets = scanner.nextLine();
+                Packaging packaging = choiceOfPackaging(str, arrayListPackaging);
+                Sweetness sweetness = selectionOfSweets(str1, arrayListSweetness);
 
-                gift.addSweetness(addSweets);
-                System.out.println(gift);
+                ArrayList<Sweetness> arrayListGift = new ArrayList<>();
+                arrayListGift.add(sweetness);
+
+                Gift gift = new Gift(arrayListGift, packaging);
+
+                int ccc = 0;
+                while (ccc != 4) {
+                    menu1();
+                    ccc = input(scanner, gift, supermarket, arrayListSweetness());
+                }
+
                 break;
 
-            case 4:
-                int x = totalCalories(gift);
-                System.out.println();
-                break;
         }
         return selectedOption;
     }
 
-    public static int totalCalories(Gift gift) {
-        List<Sweetness> list = gift.getList();
-        int calorieContentOfSweets = 0;
 
-        for (int i = 0; i < list.size(); i++) {
-            calorieContentOfSweets += list.get(i).getCalories();
-        }
-        return calorieContentOfSweets;
+    public static void menu1() {
+        System.out.println(
+                "1. Добавить сладость."
+                        + "\n" +
+                        "2.Посчитать стоимость подарка."
+                        + "\n" +
+                        "3.Посчитать калорийность подарка подарка."
+                        + "\n" +
+                        "4. Выход.");
+        System.out.print("Ваш выбор - ");
     }
 
 
-    public static Sweetness selectedSweetness(List<Sweetness> list, String str1) {
+    public static int input(Scanner scanner, Gift gift, Supermarket supermarket, ArrayList<Sweetness> arrayListSweetness) {
+        int t = Integer.parseInt(scanner.nextLine());
+
+        switch (t) {
+            case 1:
+                System.out.println("Сделайте выбор сладости из данных: " + Arrays.toString(supermarket.getSweetnessList()));
+                String str = scanner.nextLine();
+                gift.addSweetnees(selectionOfSweets(str, arrayListSweetness));
+                System.out.println(gift);
+                break;
+
+            case 2:
+                int fullValueOfTheGift = gift.fullValueOfTheGift();
+                System.out.println("стоимость подарка " + fullValueOfTheGift);
+                break;
+            case 3:
+                int giftCalories = gift.giftCalories();
+                System.out.println(giftCalories);
+                break;
+        }
+        return t;
+    }
+
+
+    public static Packaging choiceOfPackaging(String str1, ArrayList<Packaging> arrayListPackaging) {
+        Packaging packaging = null;
+
+        for (int i = 0; i < arrayListPackaging.size(); i++) {
+            if (str1.equalsIgnoreCase(arrayListPackaging.get(i).getNamePackaging())) {
+                packaging = arrayListPackaging.get(i);
+            }
+        }
+        return packaging;
+    }
+
+    public static Sweetness selectionOfSweets(String str, ArrayList<Sweetness> arrayListSweetness) {
         Sweetness sweetness = null;
-        for (int i = 0; i < list.size(); i++) {
-            if (str1.equalsIgnoreCase(list.get(i).getName())) {
-                sweetness = list.get(i);
+
+        for (int i = 0; i < arrayListSweetness.size(); i++) {
+            if (str.equalsIgnoreCase(arrayListSweetness.get(i).getName())) {
+                sweetness = arrayListSweetness.get(i);
             }
         }
         return sweetness;
     }
 
-    public static List<Sweetness> sweetsList(List<Sweetness> list, String str1) {
-        List<Sweetness> list1 = new ArrayList<>();
-        list1.add(selectedSweetness(list, str1));
-        return list1;
+    public static ArrayList<Packaging> arrayListPackaging() {
+        ArrayList<Packaging> arrayListPackaging = new ArrayList<>();
+
+        arrayListPackaging.add(new Packaging("бумага", 10));
+        arrayListPackaging.add(new Packaging("фольга", 15));
+        arrayListPackaging.add(new Packaging("целофан", 5));
+        arrayListPackaging.add(new Packaging("ткань", 25));
+        arrayListPackaging.add(new Packaging("бумага", 10));
+        return arrayListPackaging;
+
+
     }
 
-    public static Packaging packagingSelection(SeveralPackages severalPackages, String str) {
-        Packaging packaging = severalPackages.selectedPackaging(str);
-        return packaging;
-    }
+    public static ArrayList<Sweetness> arrayListSweetness() {
+        ArrayList<Sweetness> list = new ArrayList();
 
-    public static String[] arrayOfSweets(List<Sweetness> list) {
-        String[] strings = new String[list.size()];
-
-        for (int i = 0; i < list.size(); i++) {
-            strings[i] = list.get(i).getName();
-        }
-        return strings;
-    }
-
-    public static Packaging[] arrayPackaging() {
-        return new Packaging[]{
-                new Packaging("бумага", 10),
-                new Packaging("фольга", 15),
-                new Packaging("целофан", 5),
-                new Packaging("ткань", 25),
-                new Packaging("бумага", 10)};
-    }
-
-    public static List<Sweetness> arraySweetness() {
-        List<Sweetness> list = new ArrayList();
-
-        Sweetness sweetness1 = new Sweetness("леденцы", 50);
+        Sweetness sweetness1 = new Sweetness("леденцы", 50, 15);
         list.add(sweetness1);
-        list.add(new Sweetness("карамель", 100));
-        list.add(new Sweetness("печенье", 25));
+        list.add(new Sweetness("карамель", 100, 14));
+        list.add(new Sweetness("печенье", 25, 10));
 
         return list;
     }

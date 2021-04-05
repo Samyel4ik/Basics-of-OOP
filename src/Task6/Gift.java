@@ -4,40 +4,46 @@ package Task6;
 import java.util.List;
 
 public class Gift {
-    List<Sweetness> list;
+    List<Sweetness> list1;
     Packaging packaging;
 
-
-    public Sweetness newSweetness (String addSweets){
-        Sweetness sweetness = null;
-
-        for (int i = 0; i < this.list.size(); i++) {
-            if (addSweets.equalsIgnoreCase(this.list.get(i).getName())){
-                sweetness = this.list.get(i);
-            }
-        }
-        return sweetness;
-    }
-
-    public void addSweetness (String addSweets){
-        this.list.add(newSweetness(addSweets));
-
-    }
-    public void setGift(List<Sweetness> list, Packaging packaging) {
-        this.list = list;
+    public Gift(List<Sweetness> list1, Packaging packaging) {
+        this.list1 = list1;
         this.packaging = packaging;
+    }
+
+    public void addSweetnees(Sweetness sweetness) {
+
+        this.list1.add(sweetness);
 
     }
 
-    public List<Sweetness> getList() {
-        return list;
+    public int costOfSweets() {
+        int t = 0;
+
+        for (int i = 0; i < this.list1.size(); i++) {
+            t += this.list1.get(i).getPrise();
+        }
+        return t;
     }
 
+    public int fullValueOfTheGift() {
+        return costOfSweets() + this.packaging.getPricePackaging();
+    }
+
+    public int giftCalories() {
+        int giftCalories = 0;
+
+        for (int i = 0; i < this.list1.size(); i++) {
+            giftCalories += this.list1.get(i).getCalories();
+        }
+        return giftCalories;
+    }
 
     @Override
     public String toString() {
         return "Gift{" +
-                "list=" + list +
+                "list1=" + list1 +
                 ", packaging=" + packaging +
                 '}';
     }
