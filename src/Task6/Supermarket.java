@@ -1,70 +1,75 @@
 package Task6;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Supermarket {
-    ArrayList<Sweetness> sweetnessArray;
-    ArrayList<Packaging> packagingArray;
+    List<Sweetness> sweetnesses;
+    List<Packaging> packagings;
 
-    public void setSupermarket(ArrayList<Sweetness> sweetnessArray, ArrayList<Packaging> packagingArray) {
-        this.sweetnessArray = sweetnessArray;
-        this.packagingArray = packagingArray;
+    public void setSweetnesses(List<Sweetness> sweetnesses) {
+        this.sweetnesses = sweetnesses;
     }
 
-
-    public String[] getSweetnessList() {
-        String[] strings = new String[this.sweetnessArray.size()];
-
-        for (int i = 0; i < this.sweetnessArray.size(); i++) {
-            strings[i] = this.sweetnessArray.get(i).getName();
-        }
-        return strings;
-    }
-
-    public Sweetness purchaseSweetnees(String str) {
-        Sweetness sweetness = null;
-
-        for (int i = 0; i < this.sweetnessArray.size(); i++) {
-            if (str.equalsIgnoreCase(this.sweetnessArray.get(i).getName())) {
-                sweetness = this.sweetnessArray.get(i);
-            }
-        }
-        return sweetness;
-    }
-
-    public String[] getPackagingList() {
-        String[] strings = new String[this.packagingArray.size()];
-
-        for (int i = 0; i < this.packagingArray.size(); i++) {
-            strings[i] = this.packagingArray.get(i).getNamePackaging();
-        }
-        return strings;
+    public void setPackagings(List<Packaging> packagings) {
+        this.packagings = packagings;
     }
 
     public Packaging purchasePackaging(String str) {
         Packaging packaging = null;
 
-        for (int i = 0; i < this.packagingArray.size(); i++) {
-            if (str.equalsIgnoreCase(this.packagingArray.get(i).getNamePackaging()))
-                packaging = this.packagingArray.get(i);
+        for (int i = 0; i < this.packagings.size(); i++) {
+            if (str.equalsIgnoreCase(this.packagings.get(i).getName())) {
+                packaging = this.packagings.get(i);
+            }
         }
         return packaging;
     }
 
-    public ArrayList<Sweetness> getSweetnessArray() {
-        return sweetnessArray;
+    public Sweetness purchaseSweetnees(String str) {
+        Sweetness sweetness = null;
+
+        for (int i = 0; i < this.sweetnesses.size(); i++) {
+            if (str.equalsIgnoreCase(this.sweetnesses.get(i).getName())) {
+                sweetness = this.sweetnesses.get(i);
+            }
+        }
+        return sweetness;
     }
 
-    public ArrayList<Packaging> getPackagingArray() {
-        return packagingArray;
+    public List<String> getPackagingList() {
+        List<String> names = new ArrayList<>();
+
+        for (Packaging packaging : this.packagings) {
+            names.add(packaging.getName());
+        }
+        return names;
+    }
+
+    public List<String> getSweetnessList() {
+        List<String> names = new ArrayList<>(this.packagings.size());
+
+        for (Sweetness sweetness : this.sweetnesses) {
+            names.add(sweetness.getName());
+        }
+        return names;
+    }
+
+
+    public List<Sweetness> getSweetnesses() {
+        return sweetnesses;
+    }
+
+    public List<Packaging> getPackagings() {
+        return packagings;
     }
 
     @Override
     public String toString() {
         return "Supermarket{" +
-                "sweetnessArray=" + sweetnessArray +
-                ", packagingArray=" + packagingArray +
+                "sweetness=" + sweetnesses +
+                ", packaging=" + packagings +
                 '}';
     }
 }

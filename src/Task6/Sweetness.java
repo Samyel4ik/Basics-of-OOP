@@ -28,7 +28,8 @@ public class Sweetness {
     public String toString() {
         return "Sweetness{" +
                 "name='" + name + '\'' +
-
+                ", calories=" + calories +
+                ", prise=" + prise +
                 '}';
     }
 }

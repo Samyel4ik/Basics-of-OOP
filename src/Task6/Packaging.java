@@ -2,29 +2,29 @@ package Task6;
 
 public class Packaging {
 
-    String namePackaging;
-    int pricePackaging;
+    String name;
+    int price;
 
     public Packaging(String namePackaging, int pricePackaging) {
-        this.pricePackaging = pricePackaging;
-        this.namePackaging = namePackaging;
+        this.price = pricePackaging;
+        this.name = namePackaging;
 
     }
 
-    public int getPricePackaging() {
-        return pricePackaging;
+    public int getPrice() {
+        return price;
     }
 
-    public String getNamePackaging() {
-        return namePackaging;
+    public String getName() {
+        return name;
     }
 
 
     @Override
     public String toString() {
         return "Packaging{" +
-                "namePackaging='" + namePackaging + '\'' +
-                ", pricePackaging=" + pricePackaging +
+                "namePackaging='" + name + '\'' +
+                ", pricePackaging=" + price +
                 '}';
     }
 }
