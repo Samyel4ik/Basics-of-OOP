@@ -48,7 +48,7 @@ public class Supermarket {
     }
 
     public List<String> getSweetnessList() {
-        List<String> names = new ArrayList<>(this.packagings.size());
+        List<String> names = new ArrayList<>();
 
         for (Sweetness sweetness : this.sweetnesses) {
             names.add(sweetness.getName());

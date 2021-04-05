@@ -32,8 +32,8 @@ public class Gift {
 
     public int getTotalCalories() {
         int calories = 0;
-        for (Sweetness sweetness:this.sweetnesses ) {
-            calories +=sweetness.getCalories();
+        for (Sweetness sweetness : this.sweetnesses) {
+            calories += sweetness.getCalories();
         }
         return calories;
     }

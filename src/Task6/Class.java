@@ -7,27 +7,19 @@ import java.util.Scanner;
 
 public class Class {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         Supermarket supermarket = new Supermarket();
 
         supermarket.setPackagings(buildPackagings());
         supermarket.setSweetnesses(buildSweetness());
 
-        System.out.println("выберите упаковку из предложенных:");
-        System.out.println(supermarket.getPackagingList());
-        String str = scanner.nextLine();
-        System.out.println("выберите сладость из предложенных:");
-        System.out.println(supermarket.getSweetnessList());
-        String str1 = scanner.nextLine();
-
-        List<Sweetness> sweetnesses = selectedSweetness(supermarket, str1);
-        Packaging packaging = selectedPackaging(supermarket, str);
+        List<Sweetness> sweetnesses = selectedSweetness(supermarket);
+        Packaging packaging = selectedPackaging(supermarket);
 
         Gift gift = new Gift(sweetnesses, packaging);
 
         printGiftInfo(gift);
 
-        System.out.println("цена: " + gift.getTotalCalories());
+        System.out.println("цена: " + gift.getTotalPrise());
         System.out.println("калории: " + gift.getTotalCalories());
 
     }
@@ -36,13 +28,32 @@ public class Class {
         System.out.println(gift);
     }
 
-    public static Packaging selectedPackaging(Supermarket supermarket, String str) {
+    public static Packaging selectedPackaging(Supermarket supermarket) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ваш выбор из предложенных: ");
+        System.out.println(supermarket.getPackagingList());
+        String str = scanner.nextLine();
+
         return supermarket.purchasePackaging(str);
     }
 
-    public static List<Sweetness> selectedSweetness(Supermarket supermarket, String str) {
+    public static List<Sweetness> selectedSweetness(Supermarket supermarket) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("выберите сладость из предложенных или введите (выход) для завершения выбора:");
+        System.out.println(supermarket.getSweetnessList());
+
         List<Sweetness> sweetnesses = new ArrayList<>();
-        sweetnesses.add(supermarket.purchaseSweetnees(str));
+        String userInput = "";
+
+        while (!userInput.equalsIgnoreCase("выход")) {
+            userInput = scanner.nextLine();
+
+            if (!userInput.equalsIgnoreCase("выход")) {
+                Sweetness sweetness = supermarket.purchaseSweetnees(userInput);
+                sweetnesses.add(sweetness);
+            }
+        }
+
         return sweetnesses;
     }
 
