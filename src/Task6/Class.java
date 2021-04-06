@@ -19,13 +19,20 @@ public class Class {
 
         printGiftInfo(gift);
 
-        System.out.println("цена: " + gift.getTotalPrise());
-        System.out.println("калории: " + gift.getTotalCalories());
+    }
 
+    public static int totalPriseGift(Gift gift) {
+        return gift.getTotalPrise();
+    }
+
+    public static int totalCaloriesGift(Gift gift) {
+        return gift.getTotalCalories();
     }
 
     public static void printGiftInfo(Gift gift) {
         System.out.println(gift);
+        System.out.println("цена: " + totalPriseGift(gift));
+        System.out.println("калории: " + totalCaloriesGift(gift));
     }
 
     public static Packaging selectedPackaging(Supermarket supermarket) {
