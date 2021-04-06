@@ -21,18 +21,10 @@ public class Class {
 
     }
 
-    public static int totalPriseGift(Gift gift) {
-        return gift.getTotalPrise();
-    }
-
-    public static int totalCaloriesGift(Gift gift) {
-        return gift.getTotalCalories();
-    }
-
     public static void printGiftInfo(Gift gift) {
         System.out.println(gift);
-        System.out.println("цена: " + totalPriseGift(gift));
-        System.out.println("калории: " + totalCaloriesGift(gift));
+        System.out.println("Полная стоимвость подарка: " + gift.getTotalPrise());
+        System.out.println("Калорийность сладостей в подарке: " + gift.getTotalCalories());
     }
 
     public static Packaging selectedPackaging(Supermarket supermarket) {

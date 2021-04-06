@@ -55,7 +55,7 @@ public class Supermarket {
         }
         return names;
     }
-    
+
     @Override
     public String toString() {
         return "Supermarket{" +
