@@ -55,16 +55,7 @@ public class Supermarket {
         }
         return names;
     }
-
-
-    public List<Sweetness> getSweetnesses() {
-        return sweetnesses;
-    }
-
-    public List<Packaging> getPackagings() {
-        return packagings;
-    }
-
+    
     @Override
     public String toString() {
         return "Supermarket{" +
