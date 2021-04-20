@@ -1,6 +1,5 @@
 package Task6;
 
-
 import java.util.List;
 
 public class Gift {

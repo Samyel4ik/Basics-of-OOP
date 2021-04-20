@@ -19,7 +19,6 @@ public class Packaging {
         return name;
     }
 
-
     @Override
     public String toString() {
         return "Packaging{" +
